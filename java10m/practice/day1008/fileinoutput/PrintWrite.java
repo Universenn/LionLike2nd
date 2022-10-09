@@ -1,4 +1,4 @@
-package lionlike.java10m.week1.day1007.practice.fileinoutput;
+package lionlike.java10m.practice.day1008.fileinoutput;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
