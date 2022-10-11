@@ -2,6 +2,7 @@ package lionlike.java10m.practice.day1011.programmers;
 
 public class SumOfDigit {
     public int solution(int n){
+        // String 을 나누어서 하는 알고리즘
         String str = String.valueOf(n);
         int result = 0;
         for(int i =0; i<str.length(); i++){
@@ -11,7 +12,9 @@ public class SumOfDigit {
     }
 
     public int solution1(int n){
+        // 각자리 수 더할 값
         int result = 0;
+        // 나눌 값
         while (n!=0){
             result += n % 10;
             n = n / 10;
@@ -26,7 +29,7 @@ public class SumOfDigit {
         int result1 = sod.solution1(1234);
 
         if (result1 == 10) {
-            System.out.println("테스트를 통과 했습니다.");
+            System.out.printf("테스트를 통과 했습니다. result : %d", result1);
         } else {
             System.out.printf("테스트 실패 result:%d \n", result1);
         }
