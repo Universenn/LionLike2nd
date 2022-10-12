@@ -28,10 +28,15 @@ public class Main {
         Classname<String> s = new Classname<>();
 
         // 제네릭 메소드는 피라미터 타입에 따라 T타입이 결정 된다.
-        System.out.println(s.geericMethod(10));
-        System.out.println(s.geericMethod("abcd"));
-        System.out.println(s.geericMethod('1'));
+        System.out.println(s.geericMethod1(10));
+        System.out.println(s.geericMethod1("abcd"));
+        System.out.println(s.geericMethod1('1'));
 
+
+        System.out.println("<E> returnType : "+Classname.geericMethod1(3).getClass().getName());
+        System.out.println("<E> returnType : "+Classname.geericMethod1("Asds").getClass().getName());
+        System.out.println("<T> returnType : "+Classname.geericMethod1(s).getClass().getName());
+        System.out.println("<T> returnType : "+Classname.geericMethod1(3.0).getClass().getName());
 
 
     }
