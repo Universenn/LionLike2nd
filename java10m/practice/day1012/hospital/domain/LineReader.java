@@ -1,29 +1,41 @@
 package lionlike.java10m.practice.day1012.hospital.domain;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineReader {
-    List<String> readLines(String filename) throws IOException {
+public class LineReader<T> { // 제네릭 활용
 
-        List<String> result = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader(filename));
+    Parser<T> parser;
+    boolean isRemoveColumName = true;
+
+    public LineReader(Parser<T> parser) {
+        this.parser = parser;
+    }
+
+    public LineReader(Parser<T> parser,boolean isRemoveColumName) {
+        this.parser = parser;
+        this.isRemoveColumName = isRemoveColumName;
+    }
+
+    List<T> readLines(String filename) throws IOException {
+
+        List<T> result = new ArrayList<>(); // 파일을 List 로 받아야 하기 때문에
+        BufferedReader br = new BufferedReader(new FileReader(filename)); // ??
         String str;
-        while ((str =br.readLine()) != null){
-            result.add(str);
+        if(isRemoveColumName){br.readLine();}
+        while ((str =br.readLine()) != null){ // null 이 되면 종료 읽을파일이 없음
+            result.add(parser.parse(str));
         }
         return result;
     }
 
-    public static void main(String[] args) throws IOException {
-        String filename = "C:\\Users\\UserK\\Desktop\\백엔드 스쿨\\서울시 병의원 위치 정보.csv";
-        LineReader lr = new LineReader();
-        List<String> lines = lr.readLines(filename);
-        System.out.println(lines.size());
-    }
+//    public static void main(String[] args) throws IOException {
+//        String filename = "C:\\Users\\UserK\\Desktop\\백엔드 스쿨\\서울시 병의원 위치 정보.csv";
+//        LineReader lr = new LineReader();
+//        List<String> lines = lr.readLines(filename);
+//        System.out.println(lines.size());
+//    }
 }
