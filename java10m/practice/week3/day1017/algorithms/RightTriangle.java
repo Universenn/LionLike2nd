@@ -20,12 +20,26 @@ public class RightTriangle {
         }
     }
 
+    public void printStar2(int num){
+        for (int i=0; i<num; i++){
+            for (int j=0; j<=num-1-i; j++){
+                System.out.print(" ");
+            }
+            for (int j=0; j<i*2+1; j++){
+                System.out.printf("%s",letter);
+            }
+            System.out.println();
+        }
+    }
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
 
         RightTriangle rt = new RightTriangle();
 
-        rt.printStar(num);
+//        rt.printStar(num);
+        rt.printStar2(num);
     }
 }
