@@ -14,10 +14,10 @@ public class Rectangle {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num1 = sc.nextInt();
-        int num2 = sc.nextInt();
+        int x = sc.nextInt();
+        int y = sc.nextInt();
         Rectangle rectangle = new Rectangle();
 
-        rectangle.rectanglePrint(num1,num2);
+        rectangle.rectanglePrint(x,y);
     }
 }
