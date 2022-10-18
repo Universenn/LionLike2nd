@@ -1,4 +1,4 @@
-package lionlike.java10m.practice.week3.day1018;
+package lionlike.java10m.practice.week3.day1018.algorithms;
 
 import java.util.Scanner;
 
