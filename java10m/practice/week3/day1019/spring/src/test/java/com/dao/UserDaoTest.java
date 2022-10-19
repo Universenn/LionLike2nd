@@ -12,7 +12,7 @@ class UserDaoTest {
     @Test
     void addAndSelect() throws SQLException {
         UserDao userDao = new UserDao();
-        String id = "8";
+        String id = "3";
 
         User user = new User(id, "juwan","qweqwrqwr22");
         userDao.add(user);

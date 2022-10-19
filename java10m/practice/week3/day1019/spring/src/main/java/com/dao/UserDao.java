@@ -6,11 +6,29 @@ import java.sql.*;
 import java.util.Map;
 
 public class UserDao {
+
+    private ConnectionMaker connectionMaker;
+
+    public UserDao() {
+        this.connectionMaker = new AwsConnectionMaker();
+    }
+
+    public UserDao(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
+    }
+
+    //    public Connection makeConnection() throws SQLException {
+//        Map<String, String> env = System.getenv();
+//        Connection c = DriverManager.getConnection(
+//                env.get("DB_HOST"),env.get("DB_USER"),env.get("DB_PASSWORD")
+//        );
+//        return c;
+//
+//    }
     public void add(User user) throws SQLException {
         Map<String, String> env = System.getenv();
-        Connection c = DriverManager.getConnection(
-          env.get("DB_HOST"),env.get("DB_USER"),env.get("DB_PASSWORD")
-        );
+        // DB 실행
+        Connection c = connectionMaker.makeConnection();
 
         // Query 문 작성
         PreparedStatement ps = c.prepareStatement(
@@ -26,9 +44,8 @@ public class UserDao {
     }
     public User findById(String id) throws SQLException {
         Map<String, String> env = System.getenv();
-        Connection c = DriverManager.getConnection(
-                env.get("DB_HOST"),env.get("DB_USER"),env.get("DB_PASSWORD")
-        );
+        Connection c = connectionMaker.makeConnection();
+
         PreparedStatement ps = c.prepareStatement(
                 "SELECT * FROM users WHERE id = ?");
         ps.setString(1,id);
