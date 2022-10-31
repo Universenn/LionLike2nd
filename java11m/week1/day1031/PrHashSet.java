@@ -1,8 +1,6 @@
 package lionlike.java11m.week1.day1031;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 
 public class PrHashSet {
 
@@ -11,16 +9,18 @@ public class PrHashSet {
 
         HashSet<Integer> loto = new HashSet<>();
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int)(Math.random()*45+1);
+        for (int i = 0; loto.size() < 6; i++) {
+            loto.add((int)(Math.random()*45+1));
         }
 
-        for (int i : arr) {
-            loto.add(i);
-        }
         System.out.println(loto);
 
-        return arr;
+        // 오름차순 정렬
+        List list = new LinkedList(loto);
+        Collections.sort(list);
+        System.out.println(list);
+
+        return new int[0];
     }
 
     public static void main(String[] args) {
